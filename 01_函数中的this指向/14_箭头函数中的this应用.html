@@ -8,7 +8,29 @@
   </head>
   <body>
     <script>
-      function request(url) {}
+      function request(url, callback) {
+        const results = ['abc', 'cba', 'nba']
+        callback(results)
+      }
+
+      const obj = {
+        names: [],
+        network() {
+          // 1.早期做法
+          // const that = this
+          // request('123', res => {
+          //   that.names = res
+          // })
+
+          // 2.箭头函数
+          request('/names', res => {
+            this.names = res
+          })
+        },
+      }
+
+      obj.network()
+      console.log(obj)
     </script>
   </body>
 </html>
