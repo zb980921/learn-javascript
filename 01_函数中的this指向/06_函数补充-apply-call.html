@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function foo(name, age, height) {
+        console.log("foo函数被调用:", this);
+        console.log("打印参数:", name, age, height);
+      }
+
+      // ()调用
+      foo("zb", 18, 1.85);
+
+      // apply
+      /*
+        第一个参数：绑定this
+        第二个参数：传入额外的实参，以数组的形式
+      */
+      foo.apply("apply", ["otis", 16, 1.82]);
+
+      // call
+      /*
+        第一个参数：绑定this
+        后续参数：以参数列表的形式传入实参
+      */
+      foo.call("call", "steve", 16, 1.85);
+    </script>
+  </body>
+</html>

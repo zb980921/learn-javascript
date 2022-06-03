@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        new > bind > apply/call > 隐式绑定 > 默认绑定
+      */
+
+      function foo() {
+        console.log("foo:", this);
+      }
+
+      // 1.显示绑定的优先级高于隐式绑定
+      // 测试一：apply高于默认绑定
+      // var obj = { foo: foo };
+      // obj.foo.apply("abc");
+
+      // 测试二：bind高于默认绑定
+      // var bar = foo.bind(123);
+      // var obj = {
+      //   name: "zb",
+      //   ob: bar,
+      // };
+      // obj.ob();
+
+      // 2.new绑定优先级高于隐式绑定
+      // var obj = {
+      //   name: "zb",
+      //   foo: function () {
+      //     console.log("foo:", this);
+      //     console.log("foo:", this === obj);
+      //   },
+      // };
+      // new obj.foo();
+
+      // 3.new/显式
+      // 3.1 new不可以和apply/call一起使用
+
+      // 3.2 new绑定优先级高于bind
+      // var bf = foo.bind("aaa");
+      // new bf();
+
+      // 4.bind/apply优先级
+      // bind优先级高于apply/call
+      function foo() {
+        console.log("foo:", this);
+      }
+      var bindFn = foo.bind("aaa");
+      // bindFn.apply(123);
+      bindFn.call(123);
+    </script>
+  </body>
+</html>

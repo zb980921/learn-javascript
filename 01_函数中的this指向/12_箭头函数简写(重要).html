@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var names = ['abc', 'cba', 'nba']
+      var nums = [20, 30, 11, 15, 111]
+
+      // 1.如果箭头函数只有一个参数，那么()可以省略
+      // names.forEach(item => {
+      //   console.log(item)
+      // })
+      // var evenNums = nums.filter(item => {
+      //   return item % 2 === 0
+      // })
+
+      // 2.如果函数体中只有一个表达式，那么{}可以省略
+      // names.forEach(item => console.log(item))
+
+      // 3.只有一行代码时，这行代码的表达式结果会作为函数的返回值默认返回
+      // nums.filter(item => item % 2 === 0)
+
+      // 4.如果返回值是一个对象，那么这个对象必须加()
+      // var arrFn = () => ({
+      //   a: 1,
+      //   b: 2,
+      // })
+      // console.log(arrFn())
+
+      // 使用箭头函数实现nums所有偶数的平方和
+      var result = nums
+        .filter(item => item % 2 === 0)
+        .reduce((pre, cur) => pre + cur ** 2, 0)
+      console.log(result)
+    </script>
+  </body>
+</html>

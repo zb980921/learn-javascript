@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function foo(name, age, height) {
+        console.log("foo:", this);
+        console.log("参数:", name, age, height);
+      }
+      var obj = {
+        name: "zb",
+      };
+
+      // 调用foo时总是绑定到obj对象(不希望obj对象身上有foo函数)
+      // 创建一个新的绑定函数BF(bound function)
+      // 1.bind函数的基本使用
+      // var bar = foo.bind(obj);
+      // bar();
+
+      // 2.bind函数的其他参数(了解)
+      var bar = foo.bind(obj, "zb", 18);
+      bar(1.85); // 追加到参数列表后面
+    </script>
+  </body>
+</html>
