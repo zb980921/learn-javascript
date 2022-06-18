@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 案例一：打印一些日志
+    // 信息一：日志的时间
+    // 信息二：日志的类型：info / warn / error
+    // 信息三：具体的内容
+
+    // 1.没有柯里化的时候的做法
+    // function log(date, type, message) {
+    //   console.log(`[${date}] ${type}: ${message}`);
+    // }
+
+    // log("2022-06-18 21:55:40", 'INFO', 'Good night.')
+    // log("2022-06-18 22:55:40", 'WARN', 'Time to bed.')
+    // log("2022-06-18 23:55:40", 'ERROR', 'You\'re dead.')
+
+    // 2.对函数进行柯里化
+    // var log = date => type => message => {
+    //   console.log(`[${date}] ${type}: ${message}`)
+    // }
+    // var logNow = log(new Date().toLocaleString())
+    // var logInfo = logNow('INFO')
+    // var logWarn = logNow('WARN')
+    // var logError = logNow('ERROR')
+    // logError('You are dead.')
+    // logInfo('Hello, world!')
+    // logWarn('Time to bed.')
+  </script>
+</body>
+</html>
