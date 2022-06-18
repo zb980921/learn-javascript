@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var names = ['abc', 'cba', 'nba', 'mba']
+
+    // 1.slice 不会修改原数组，返回了一个新的数组，属于纯函数
+    names.slice(0, 2) // ['abc', 'cba']
+    console.log(names);
+
+    // 2.splice 会修改原数组，返回被删除的元素组成的数组，不属于纯函数
+    names.splice(0, 1, 'a')
+    console.log(names);
+  </script>
+</body>
+</html>

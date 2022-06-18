@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function sum(n1, n2) {
+      return n1 + n2
+    }
+
+    // 不是一个纯函数
+    function printInfo(info) {
+      console.log(info.name, info.age, info.message);
+      info.flag = true
+    }
+
+    var obj = {
+      name: 'zb',
+      age: 23,
+      message: 'hhh'
+    }
+    printInfo(obj)
+
+  </script>
+</body>
+</html>
