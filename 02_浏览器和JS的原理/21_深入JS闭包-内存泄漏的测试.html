@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- be careful, one more click, half a gigabyte of memory -->
+  <button id="create">创建一系列的数组对象</button>
+
+  <!-- clear all references, gc will work on it -->
+  <button id="destroy">销毁一系列的数组对象</button>
+
+  <script>
+
+    function createArray() {
+      // 400MB
+      var arr = new Array(1024*1024).fill(100)
+
+      function test() {
+        console.log(arr);
+      }
+
+      return test
+    }
+
+    var totalArr = []
+
+    var createBtn = document.querySelector('#create')
+    var destroyBtn = document.querySelector('#destroy')
+    createBtn.addEventListener('click', function() {
+      for(var i = 0; i < 100; i++) {
+        totalArr.push(createArray())
+      }
+    })
+    destroyBtn.addEventListener('click', function() {
+      totalArr = []
+    })
+  </script>
+</body>
+</html>

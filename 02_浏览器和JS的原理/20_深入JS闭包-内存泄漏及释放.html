@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 前三次加5，后三次加8
+    // function adder(num) {
+    //   return num + 5
+    // }
+    
+    // adder(100)
+    // adder(40)
+    // adder(30)
+
+    // adder(22)
+    // adder(32)
+    // adder(42)
+
+
+
+    function createAdder(count) {
+      function adder(num) {
+        console.log(count + num);
+        return count + num
+      }
+      return adder
+    }
+
+    var adder5 = createAdder(5)
+    adder5(95)
+    adder5(35)
+    adder5(25)
+
+    var adder8 = createAdder(8)
+    adder8(92)
+    adder8(42)
+    adder8(52)
+
+    // 后面不再使用adder8
+    // 内存泄漏：对于那些我们不再使用的对象，引用依然可达，GC不会对其进行回收
+    adder8 = null
+  </script>
+</body>
+</html>

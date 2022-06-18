@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var zb = 'zb'
+    var age = 22
+    var height = 1.85
+    var address = '南京市'
+    var intro = 'a coder'
+
+    function foo(zb, age, height, address, intro) {
+      var message = 'Hello, world'
+      console.log(message, zb, age, height, address, intro);
+    }
+
+    // 如果没有闭包，foo函数内想要访问外部的变量，必须在调用的时候传递进去！It sucks!
+    // Thanks to closure
+    foo(zb, age, height, address, intro)
+  </script>
+</body>
+</html>
