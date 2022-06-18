@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function foo(m, n) {
+      // 类数组
+      console.log(arguments);
+      // 1.通过索引获取内容
+      // console.log(arguments[1]);
+      // 遍历
+      // for(var arg of arguments) {
+      //   console.log(arg);
+      // }
+
+      // 2.需求：获取所有参数中的偶数
+      // 2.1.将arguments转成数组的方式一：
+      // var args = []
+      // for(var n of arguments) {
+      //   args.push(n)
+      // }
+      // console.log(args);
+
+      // 2.2.将arguments转成数组的方式二：调用slice方法
+      var args =[].slice.call(arguments)
+      console.log(args);
+
+      // 2.3.将arguments转成数组的方式三：ES6方式
+      // var args1 = Array.from(arguments)
+      // console.log(args1);
+      // var args2 = [...arguments]
+      // console.log(args2);
+    }
+
+    foo(10, 21, 33, 40)
+
+  </script>
+</body>
+</html>
