@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      原型链 + 借用构造函数 = 组合继承
+      组合继承是JavaScript最常用的继承模式之一
+
+      1.父类构造函数会被调用两次
+      2.所有子类实例拥有两份父类的属性
+    */
+
+    function Person(name, age, height, address) {
+      this.name = name
+      this.age = age
+      this.height = height
+      this.address = address
+    }
+    Person.prototype.run = function() {
+      console.log('running~');
+    }
+    Person.prototype.eat = function() {
+      console.log('eating~');
+    }
+
+    function Student(name, age, height, address, sno, score) {
+      // 重点：借用构造函数
+      Person.call(this, name, age, height, address)
+
+      this.sno = sno
+      this.score = score
+    }
+
+    var p = new Person()
+    Student.prototype = p
+
+    Student.prototype.study = function() {
+      console.log('studying~');
+    }
+    
+    var stu1 = new Student('zb', 23, 1.85, '江苏', '10001', 99)
+    var stu2 = new Student('sj', 22, 1.88, '浙江', '10002', 98)
+    stu1.run()
+    stu1.study()
+    console.log(stu1.name, stu1.age);
+    console.log(stu2.name, stu2.age);
+    console.log(stu1);
+    console.log(stu2);
+  </script>
+</body>
+</html>
