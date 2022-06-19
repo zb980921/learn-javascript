@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function Student(name, age, sno, score) {
+      this.name = name
+      this.age = age
+      this.sno = sno
+      this.score = score
+    }
+    Student.prototype.study = function() {}
+    Student.prototype.eat = function() {}
+    Student.prototype.run = function() {}
+
+    function Teacher(name, age, tno, subject) {
+      this.name = name
+      this.age = age
+      this.tno = tno
+      this.subject = subject
+    }
+    Teacher.prototype.teach = function() {}
+    Teacher.prototype.eat = function() {}
+    Teacher.prototype.run = function() {}
+  </script>
+</body>
+</html>
