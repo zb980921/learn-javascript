@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict"
+
+    // 1.不会意外地创建全局变量
+    // function foo() {
+    //   message = 'Hello, world!' // Error: message is not defined
+    // }
+    // foo()
+    // console.log(message);
+
+    // 2.发现静默错误
+    // var obj = {
+    //   name: 'zb'
+    // }
+    // Object.defineProperty(obj, 'name', {
+    //   writable: false, // 只读
+    //   configurable: false // 属性不可删除
+    // })
+    // obj.name = 'joey' // Error
+    // delete obj.name // Error
+    // console.log(obj);
+
+    // 3.函数参数名称不能相同
+    // function foo(num, num) {} // Duplicate parameter name not allowed in this context
+
+    // 4.不允许0开头的八进制，必须0o开头
+    // console.log(0o123);
+
+    // 5.不允许使用with
+
+    // 6.eval不再为上层创建变量
+    // eval(`var a = 1`)
+    // console.log(a); // a is not defined
+
+    // 7.this绑定不会默认转成对象类型，"abc" -> {String: "abc"}
+    function foo() {
+      console.log(this);
+    }
+    foo.apply("abc")
+    foo.apply(null)
+    foo.apply(undefined)
+
+    // 独立函数执行默认模式下，绑定window对象
+    // 严格模式下，绑定undefined
+    foo()
+  </script>
+</body>
+</html>
