@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 对象之间的继承
+    var obj = {
+      name: 'zb',
+      age: 23
+    }
+
+    // 原型式继承
+    function createObject(o) {
+      function F() {}
+      F.prototype = o
+      return new F()
+    }
+
+    // 寄生式函数
+    function createInfo(o, name, age, height, address) {
+      var newObj = createObject(o)
+      newObj.name = name
+      newObj.age = age
+      newObj.height = height
+      newObj.address = address
+      return newObj
+    }
+
+    // 创建另外一个对象，这个对象可以继承自obj
+    var info1 = createInfo(obj, 'zb', 23, 1.85, 'Jiangsu')
+    console.log(info1);
+  </script>
+</body>
+</html>
