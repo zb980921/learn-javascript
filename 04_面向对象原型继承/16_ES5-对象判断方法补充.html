@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./js/inherit_utils.js"></script>
+  <script>
+
+    var obj = {
+      name: 'zb',
+      age: 23
+    }
+
+    var info = createObject(obj)
+    info.address = 'China'
+    info.intro = 'PRC'
+
+    console.log(info.name, info.address);
+    console.log(info);
+
+    // 1.hasOwnProperty
+    // console.log(info.hasOwnProperty('name')); // false
+    // console.log(info.hasOwnProperty('address')); // true
+
+    // 2.in操作符
+    // console.log('name' in info); // true
+    // console.log('address' in info); // true
+
+    // 遍历所有的key，自身 + 原型
+    // for(var key in info) {
+    //   console.log(key);
+    // }
+    
+    // 3.instanceof 判断对象和类(构造函数)之间的关系
+    function Person() {}
+    function Student() {}
+    inherit(Student, Person)
+
+    var stu = new Student()
+    // console.log(stu instanceof Student); // true
+    // console.log(stu instanceof Person); // true
+    // console.log(stu instanceof Object); // true
+    // console.log(stu instanceof Array); // false
+
+    // 4.isPrototypeOf 判断某个对象是否出现在传入对象的原型链上
+    console.log(Student.prototype.isPrototypeOf(stu)); // true
+    console.log(Person.prototype.isPrototypeOf(stu)); // true
+    console.log(Object.prototype.isPrototypeOf(stu)); // true
+  </script>
+</body>
+</html>
