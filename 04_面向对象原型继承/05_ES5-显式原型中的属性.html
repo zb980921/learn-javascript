@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 非常重要的属性：constructor -> Person函数对象
+    function Person() {
+      
+    }
+
+    var PersonProtoType = Person.prototype
+    console.log(PersonProtoType);
+    console.log(PersonProtoType.constructor);
+    console.log(PersonProtoType.constructor === Person);
+
+    console.log(Person.name);
+    console.log(PersonProtoType.constructor.name);
+
+    // 实例对象
+    var p = new Person()
+    console.log(p.__proto__.constructor);
+    console.log(p.__proto__.constructor.name);
+  </script>
+</body>
+</html>

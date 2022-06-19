@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function Student(name, age, sno) {
+      this.name = name
+      this.age = age
+      this.sno = sno
+
+      // 每创建一个Student对象，就会创建一个study函数，浪费内存空间
+      // this.study = function() {
+      //   console.log(this.name + ' is studying.');
+      // }
+    }
+
+    // 当多个对象拥有共同的值时，我们可以将这些共同的值放到构造函对象的显式原型上
+    // 由构造函数创建出来的所有对象，都会共享这些属性
+    Student.prototype.study = function() {
+      // this的隐式绑定
+      console.log(this.name + ' is studying.');
+    }
+
+
+    // 1.创建三个学生
+    var stu1 = new Student('Ross', 16, '1001')
+    var stu2 = new Student('Chandler', 18, '1002')
+    var stu3 = new Student('Joey', 17, '1003')
+
+    /*
+      隐式原型的作用：
+      1.stu1的隐式原型__proto__ -> Student.prototype
+      2.stu1.study 的查找规则：
+        先在自己身上查找，没有找到；
+        再去自己的原型__proto__查找
+    */
+
+    // console.log(stu1.study === stu2.study); // false
+    stu1.study()
+    stu2.study()
+    stu3.study()
+
+  </script>
+</body>
+</html>
