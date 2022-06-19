@@ -45,8 +45,13 @@
 
     var logCurry = zbCurrying(log)
     logCurry(new Date().toLocaleDateString())('ERROR')('You are dead!')
-    var logTody = logCurry(new Date().toLocaleDateString())
-    logTody('INFO', 'Hello, world!')
+    var logToday = logCurry(new Date().toLocaleDateString())
+    logToday('INFO', 'Hello, world!')
+
+    // 释放闭包占用的AO内存
+    fooCurry = null
+    logCurry = null
+    logToday = null
   </script>
 </body>
 </html>
