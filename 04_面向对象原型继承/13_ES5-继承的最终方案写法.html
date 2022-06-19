@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./js/inherit_utils.js"></script>
+  <script>
+    /*
+      寄生组合式继承
+      原型链 + 借用构造函数 + 原型式(对象之间) + 寄生式函数
+    */
+
+    function Person(name, age, height) {
+      this.name = name
+      this.age = age
+      this.height = height
+    }
+    Person.prototype.run = function() {
+      console.log('running~');
+    }
+    Person.prototype.eat = function() {
+      console.log('eating~');
+    }
+
+    function Student(name, age, height, sno, score) {
+      Person.call(this, name, age, height)
+      this.sno = sno
+      this.score = score
+    }
+
+    inherit(Student, Person)
+    Student.prototype.study = function() {
+      console.log('studying~');
+    }
+
+    var stu1 = new Student('zb', 23, 1.85, '100001', 99)
+    console.log(stu1);
+    stu1.eat()
+    stu1.run()
+    stu1.study()
+  </script>
+</body>
+</html>
