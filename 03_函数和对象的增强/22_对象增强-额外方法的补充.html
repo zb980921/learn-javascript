@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var obj = {
+      name: 'zb',
+      age: 23,
+      height: 1.85
+    }
+
+    console.log(Object.getOwnPropertyDescriptor(obj, 'name'));
+    console.log(Object.getOwnPropertyDescriptors(obj));
+
+    // Object.preventExtensions(obj)
+    // obj.address = 'Jiangsu'
+    // console.log(obj);
+
+    // Object.seal(obj)
+    // delete obj.age
+    // console.log(obj);
+
+    Object.freeze(obj)
+    obj.name = 'Joey'
+    obj.address = 'Jiangsu'
+    console.log(obj);
+  </script>
+</body>
+</html>

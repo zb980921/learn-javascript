@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var obj = {
+      name: 'zb', // configurable: true
+      age: 23
+    }
+
+    Object.defineProperty(obj, 'name', {
+      configurable: false, // 限制obj对象的name属性不可被删除或重新配置
+      enumerable: false, // obj对象的name属性不可被枚举
+      writable: false, // ojb对象的name属性为只读属性
+      value: '123' // obj对象的name属性值为'123'
+    })
+    delete obj.name
+    obj.name = 'zb980921'
+    console.log(obj.name);
+
+    // Cannot redefine property: name
+    // Object.defineProperty(obj, 'name', {
+    //   enumerable: false
+    // })
+
+    // 通过 `Object.defineProperty` 添加属性，configurable为false
+    Object.defineProperty(obj, "height", {})
+    // delete obj.height
+    obj.height = 123
+    console.log(obj);
+
+    console.log(Object.keys(obj));
+  </script>
+</body>
+</html>

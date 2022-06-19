@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // Vue2响应式原理
+    var obj = {
+      name: 'zhubei'
+    }
+
+    // 对obj对象的name属性添加存取属性描述符
+    var _name = ''
+    Object.defineProperty(obj, 'name', {
+      configurable: true,
+      enumerable: false,
+
+      set: function(value) {
+        _name = value
+        console.log('name属性的set方法被调用。', value);
+      },
+      get: function() {
+        console.log('name属性的get方法被调用。');
+        return _name
+      }
+    })
+
+    obj.name = 'Ross'
+    obj.name = 'Chandler'
+    obj.name = 'Joey'
+
+    console.log(obj.name);
+  </script>
+</body>
+</html>
