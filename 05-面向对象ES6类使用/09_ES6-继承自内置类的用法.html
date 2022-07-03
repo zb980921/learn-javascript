@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1.创建一个新的类，继承自Array进行扩展
+       */
+      // class ZBArray extends Array {
+      //   get lastItem() {
+      //     return this[this.length - 1];
+      //   }
+      //   get sum() {
+      //     return this.reduce((prev, cur) => prev + cur, 0);
+      //   }
+      // }
+
+      // var arr = new ZBArray(10, 20, 30);
+      // console.log(arr);
+      // console.log(arr.length);
+      // console.log(arr[0]);
+      // console.log(arr.lastItem);
+      // console.log(arr.sum);
+
+      /*
+        2.直接对Array进行扩展
+       */
+      Array.prototype.lastItem = function () {
+        return this[this.length - 1];
+      };
+      Object.defineProperty(Array.prototype, "sum", {
+        get() {
+          return this.reduce((prev, cur) => prev + cur, 0);
+        },
+        enumerable: false,
+        configurable: false,
+      });
+      var arr = new Array(100, 200, 300);
+      console.log(arr.sum);
+      console.log(arr.lastItem());
+    </script>
+  </body>
+</html>

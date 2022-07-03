@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        running() {
+          console.log("running~");
+        }
+        eating() {
+          console.log("eating~");
+        }
+
+        static sleep() {
+          console.log("static animal sleep");
+        }
+      }
+
+      class Dog extends Animal {
+        // 子类如果对于父类的方法实现不满足(继承过来的方法)
+        running() {
+          console.log("Dogs run with 4 legs");
+          // 调用父类的方法
+          super.running();
+        }
+
+        static sleep() {
+          console.log("趴着");
+          // 调用父类的静态方法
+          super.sleep();
+        }
+      }
+
+      var dog = new Dog();
+      dog.running();
+      dog.eating();
+
+      Dog.sleep();
+    </script>
+  </body>
+</html>
