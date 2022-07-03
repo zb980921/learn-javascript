@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+
+        running() {
+          console.log("running~");
+        }
+        eating() {
+          console.log("eating~");
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, sno, score) {
+          super(name, age);
+          this.sno = sno;
+          this.score = score;
+        }
+
+        studying() {
+          console.log("studying~");
+        }
+      }
+
+      class Teacher extends Person {
+        constructor(name, age, title) {
+          super(name, age);
+          this.title = title;
+        }
+
+        teaching() {
+          console.log("teaching~");
+        }
+      }
+
+      var stu1 = new Student("zb", 23, "10010", 99);
+      console.log(stu1);
+      stu1.running();
+      stu1.eating();
+      stu1.studying();
+
+      var tea1 = new Teacher("Joe", 40, "headmaster");
+      console.log(tea1);
+      tea1.running();
+      tea1.eating();
+      tea1.teaching();
+    </script>
+  </body>
+</html>

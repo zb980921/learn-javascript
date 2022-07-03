@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function Person() {}
+      // // 实例方法
+      // Person.prototype.running = function () {};
+      // // 类方法
+      // Person.randomPerson = function () {};
+
+      var names = ["Joey", "Monica", "Ross", "Chandler", "Rachel", "Phoebe"];
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+
+        // 实例方法
+        running() {
+          console.log(this.name + " is running~");
+        }
+        eating() {}
+
+        // 静态方法(类方法)
+        static randomPerson() {
+          console.log(this); // Person
+          var randomName = names[Math.floor(Math.random() * names.length)];
+          return new this(randomName, Math.floor(Math.random() * 10 + 21));
+        }
+      }
+
+      var p1 = new Person("zb", 24);
+      p1.running();
+      p1.eating();
+      var rp = Person.randomPerson();
+      console.log(rp);
+    </script>
+  </body>
+</html>
