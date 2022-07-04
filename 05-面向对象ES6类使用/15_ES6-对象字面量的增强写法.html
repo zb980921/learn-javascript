@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1.属性的增强
+       */
+      var username = "zb";
+      var age = 23;
+
+      var obj = {
+        username,
+        age,
+      };
+
+      function foo() {
+        var msg = "Hello, world!";
+        var info = "My name is ZhuBei";
+
+        return { msg, info };
+      }
+
+      /*
+        2.方法的增强
+       */
+      var fooKey = "a" + "b";
+      var foo = {
+        foo() {
+          console.log("foo");
+        },
+
+        /*
+          3.计算属性名
+         */
+        [fooKey]: "abc",
+      };
+      foo.foo();
+      console.log(foo[fooKey]); // "abc"
+    </script>
+  </body>
+</html>
