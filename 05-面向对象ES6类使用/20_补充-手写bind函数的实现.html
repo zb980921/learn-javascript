@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function foo(name, age, height) {
+        console.log(this, name, age, height);
+      }
+
+      // 实现 zbBind 函数
+      Function.prototype.zbBind = function (thisArg, ...args) {
+        // this -> foo 函数对象
+        thisArg =
+          thisArg === null || thisArg === undefined ? window : Object(thisArg);
+
+        Object.defineProperty(thisArg, "fn", {
+          enumerable: false,
+          configurable: false,
+          writable: false,
+          value: this,
+        });
+
+        return function (...otherArgs) {
+          // var allArgs = args.concat(otherArgs);
+          var allArgs = [...args, ...otherArgs];
+          thisArg.fn(...allArgs);
+        };
+      };
+
+      var newFoo = foo.zbBind("abc", "zb", 23);
+      newFoo(1.85);
+      newFoo(1.85);
+      newFoo(1.85);
+      newFoo(1.85);
+    </script>
+  </body>
+</html>
