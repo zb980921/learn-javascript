@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function foo(name, age) {
+        console.log(this, name, age);
+      }
+
+      // 1.封装思想
+      // 1.1.封装到独立的函数中
+      function execFn(thisArg, args, fn) {
+        thisArg =
+          thisArg === null || thisArg === undefined ? window : Object(thisArg);
+
+        Object.defineProperty(thisArg, "fn", {
+          enumerable: false,
+          configurable: true,
+          value: fn,
+        });
+        thisArg.fn(...args);
+        delete thisArg.fn;
+      }
+
+      // 1.2.封装到原型中，可以少传一个参数
+      Function.prototype.zbExe = function (thisArg, args) {
+        thisArg =
+          thisArg === null || thisArg === undefined ? window : Object(thisArg);
+
+        Object.defineProperty(thisArg, "fn", {
+          enumerable: false,
+          configurable: true,
+          value: this,
+        });
+        thisArg.fn(...args);
+        delete thisArg.fn;
+      };
+
+      Function.prototype.zbApply = function (thisArg, args) {
+        // execFn(thisArg, args, this);
+        this.zbExe(thisArg, args);
+      };
+
+      Function.prototype.zbCall = function (thisArg, ...args) {
+        // execFn(thisArg, args, this);
+        this.zbExe(thisArg, args);
+      };
+
+      foo.zbApply(123, ["Joey", 30]);
+      foo.zbCall("aaa", "zb", 23);
+    </script>
+  </body>
+</html>

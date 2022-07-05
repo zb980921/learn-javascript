@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function foo(name, age) {
+        console.log(this, name, age);
+      }
+
+      // foo 函数可以通过 apply/call 调用
+      // foo.apply("aaa", ["zb", 24]); // String {'aaa'} 'zb' 24
+      // foo.call("bbb", "Joey", 30); // String {'bbb'} 'Joey' 30
+
+      // 1.给函数对象添加方法
+      Function.prototype.zbApply = function (thisArg, args) {
+        // this -> 调用的函数对象
+        // thisArg -> 传入的第一个参数，要绑定的 this
+        // console.log(this);
+        // this.apply(thisArg, args);
+
+        // 1.获取 thisArg，并且确保是一个对象类型
+        thisArg =
+          thisArg === null || thisArg === undefined ? window : Object(thisArg);
+
+        // thisArg.fn = this;
+        Object.defineProperty(thisArg, "fn", {
+          enumerable: false,
+          configurable: true,
+          value: this,
+        });
+        thisArg.fn(...args);
+        delete thisArg.fn;
+      };
+
+      // foo.zbApply({ name: "zb" }, ["zb", 24]);
+      // foo.zbApply(123, ["lb", 26]);
+      // foo.zbApply(null, ["lb", 26]);
+
+      Function.prototype.zbCall = function (thisArg, ...args) {
+        thisArg =
+          thisArg === null || thisArg === undefined ? window : Object(thisArg);
+
+        Object.defineProperty(thisArg, "fn", {
+          value: this,
+          enumerable: false,
+          configurable: true,
+        });
+        thisArg.fn(...args);
+        delete thisArg.fn;
+      };
+
+      foo.zbCall("aaa", "zb", 23);
+    </script>
+  </body>
+</html>
