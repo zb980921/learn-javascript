@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ES6 之前
+      var msg1 = "Hello, world!";
+      msg1 = "aaa";
+
+      // ES6 开始
+      // 1.let
+      let msg2 = "Hello, let!";
+      msg2 = "孤单北半球";
+      msg2 = 123;
+
+      /*
+        2.const
+        一旦声明 const，值不能被修改，但可以通过引用去修改对象内部的属性
+       */
+      const msg3 = "Hello, const!";
+      // msg3 = 123; // TypeError: Assignment to constant variable.
+
+      // 赋值引用类型
+      const obj1 = { msg: "你好" }; // obj1 保存的是对象的引用
+      obj1.msg = "世界"; // ok
+      // obj1 = {}; // TypeError: Assignment to constant variable.
+    </script>
+  </body>
+</html>

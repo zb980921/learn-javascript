@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.var 声明的变量会进行作用域提升
+      // console.log(msg); // undefined
+      // var msg = "Hello, world!";
+
+      // 2.let、const：没有作用域提升
+      /*
+        ReferenceError: Cannot access 'address' before initialization
+        当词法环境创建时，address 就会被创建，evaluated 之前不能被访问
+       */
+      // console.log(address);
+      // let address = "NanJing";
+    </script>
+  </body>
+</html>

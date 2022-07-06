@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1.暂时性死区
+       */
+      // function foo() {
+      //   /* 这里开始
+
+      //    TDZ
+      //    这里面不能访问 bar、baz
+
+      //   这里结束 */
+      //   let bar = "bar";
+      //   let baz = "baz";
+      // }
+      // foo();
+
+      /*
+        2.暂时性死区和定义的位置没有关系，和代码执行的顺序有关系
+       */
+      // function foo() {
+      //   console.log(message);
+      // }
+      // let message = "Hello, world!";
+      // foo(); // 在这里调用 foo 没问题，可以打印 message
+      // console.log(message);
+
+      /*
+        3.暂时性死区形成之后，在该区域内这个标识符不能访问
+       */
+      let message = "Hello, world!";
+      function foo() {
+        console.log(message); // 访问自身词法环境的 EnvironmentRecord
+
+        let message = "你好，世界！";
+      }
+      foo(); // ReferenceError: Cannot access 'message' before initialization
+    </script>
+  </body>
+</html>
