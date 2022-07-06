@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        词法环境：环境记录(Environment Record) + 外部词法环境 outer(可能为 null)
+          一个词法环境经常用于关联一个函数声明、代码块语句、try-catch 语句，
+          当这些代码执行时，词法环境会被创建出来。
+
+        全局执行上下文关联的词法环境的 outer -> null
+
+        foo 函数的词法环境的 outer -> 全局执行上下文的词法环境
+
+        一个执行上下文会关联：LexicalEnvironment 和 VariableEnvironment
+          - LexicalEnvironment 用于处理 let、const 声明的标识符
+            被赋值之前不能访问
+
+          - VariableEnvironment 用于处理 var 和 function 声明的标识符
+            创建时会立即初始化为 undefined
+
+        环境记录：
+          声明式
+          对象式
+       */
+
+      function foo() {
+        console.log("foo function");
+        // console.log(name); // Cannot access 'name' before initialization
+
+        // name 被赋值之前不能访问
+        let name;
+      }
+
+      var message = "Hello, world!";
+
+      foo();
+    </script>
+  </body>
+</html>
