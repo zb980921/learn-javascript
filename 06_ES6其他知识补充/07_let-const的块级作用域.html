@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.在 ES5 以及之前，只有全局和函数会形成自己的作用域
+      // 代码块
+      // function foo() {
+      //   console.log("Hello, world!");
+      // }
+
+      // {
+      //   var message = "Hello";
+      // }
+      // console.log(message); // 可以正常访问，打印 'Hello'
+
+      // 2.从 ES6 开始，使用 let/const 声明的变量是有块级作用域的
+      // bar(); // TypeError: bar is not a function
+      // console.log(bar); // undefined
+      {
+        let age = 23;
+        const height = 1.85;
+
+        class Person {}
+
+        // 函数拥有块级作用域，但是外部可以正常访问
+        function bar() {
+          console.log("function bar");
+        }
+      }
+      // console.log(age); // ReferenceError: age is not defined
+      // console.log(height); // ReferenceError: height is not defined
+      // const p = new Person(); // ReferenceError: Person is not defined
+      bar(); // 可以正常访问，打印 'function bar'
+    </script>
+  </body>
+</html>
