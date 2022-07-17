@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.function 定义的函数有两个原型：__proto__ 和 prototype
+
+      // 2.箭头函数没有显式原型 prototype
+      const foo = () => {};
+      console.log(foo.__proto__ === Function.prototype);
+      console.log(foo.prototype);
+      // console.log(new foo()); // TypeError: foo is not a constructor
+    </script>
+  </body>
+</html>
