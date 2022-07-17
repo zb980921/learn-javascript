@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        使用 Symbol 生成一个独一无二的值
+       */
+      const s1 = Symbol();
+      const obj = {
+        [s1]: "zb",
+      };
+      console.log(obj);
+
+      const s2 = Symbol();
+      obj[s2] = "kobe";
+      console.log(obj);
+
+      function foo(obj) {
+        const s = Symbol();
+        // 永远不会和 obj 已有的属性名冲突
+        obj[s] = function () {};
+        delete obj[s];
+      }
+      foo(obj);
+    </script>
+  </body>
+</html>

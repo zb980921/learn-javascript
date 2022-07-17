@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const s1 = Symbol(); // 'a'
+      const s2 = Symbol(); // 'b'
+
+      /*
+        1.加入到对象中
+       */
+      const obj1 = {
+        [s1]: "a",
+        [s2]: "b",
+      };
+
+      const obj2 = {};
+      obj2[s1] = "a";
+      obj2[s2] = "b";
+
+      const obj3 = {};
+      Object.defineProperties(obj3, {
+        [s1]: { value: "a" },
+        [s2]: { value: "b" },
+      });
+
+      /*
+        2.获取 Symbol 对应的 key
+       */
+      const symbolKeys = Object.getOwnPropertySymbols(obj3);
+      for (const k of symbolKeys) {
+        console.log(obj3[k]);
+      }
+
+      /*
+        3.Symbol 的描述
+          Symbol 函数直接生成的值，都是独一无二
+       */
+      // const s3 = Symbol("s3");
+      // console.log(s3.description); // 's3'
+      // const s4 = Symbol(s3.description);
+      // console.log(s3 === s4); // false
+
+      // 如果相同的 key，使用 Symbol.for 可以生成相同的 Symbol 值
+      const s5 = Symbol.for("d");
+      const s6 = Symbol.for("d");
+      console.log(s5 === s6); // true
+
+      // 获取传入的 key
+      console.log(Symbol.keyFor(s5));
+      console.log(Symbol.keyFor(s6));
+    </script>
+  </body>
+</html>
