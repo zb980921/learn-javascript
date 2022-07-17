@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1.默认参数放在形参列表的最后面
+        2.有默认参数的形参，是不会计算在 length 之内的(并且后面所有的参数都不会计算在内)
+        3.剩余参数也是放到后面(默认参数放到剩余参数的前面)
+       */
+      function foo(age, name = "张三", ...args) {
+        console.log(`name: ${name}, age: ${age}`);
+        console.log(args);
+      }
+
+      foo(23, "李四", 1, 2, 3);
+      console.log(foo.length); // 1
+    </script>
+  </body>
+</html>
