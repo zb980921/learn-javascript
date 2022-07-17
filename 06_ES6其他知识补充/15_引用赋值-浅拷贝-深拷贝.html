@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        name: "zb",
+        age: 18,
+        height: 1.85,
+        friends: ["Joey", "Ross", "Chandler"],
+      };
+
+      // 1.引用赋值，obj.name = 'zs'，info1.name 也会改变，两者指向同一片内存空间
+      // const info1 = obj;
+
+      // 2.浅拷贝，将 obj 的属性拷贝一份，放在新创建的空对象里，使 info2 指向该新对象
+      // obj 和 info2 指向不同的内存空间，两个对象的顶层属性互相独立
+      // const info2 = {
+      //   ...obj,
+      // };
+      // obj.friends.push("Monica"); // obj 和 info2 的 friends 都会改变
+      // console.log(info2.friends); // ['Joey', 'Ross', 'Chandler', 'Monica']
+
+      /*
+        3.深拷贝
+          方式一：借助第三方库
+          方式二：自己实现
+          方式三：利用现有的 JS 机制
+       */
+      const info3 = JSON.parse(JSON.stringify(obj));
+      info3.friends.push("Monica");
+      console.log(obj.friends);
+    </script>
+  </body>
+</html>

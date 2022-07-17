@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const names = ["abc", "cba", "nba"];
+      const str = "hello";
+
+      function foo(n1, n2, ...args) {
+        console.log(n1, n2, args);
+      }
+      // foo(...names);
+      // foo(...str);
+
+      const obj = { name: "zb", age: 23 };
+
+      /*
+        在函数调用时使用展开语法，被展开的对象必须是可迭代的(数组、string、arguments)
+       */
+      // foo(...obj); // TypeError: Found non-callable @@iterator
+
+      const info = {
+        ...obj,
+        height: 1.85,
+      };
+      console.log(info);
+    </script>
+  </body>
+</html>
