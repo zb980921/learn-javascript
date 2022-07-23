@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.创建 Set
+      const set = new Set();
+
+      // 2.添加元素
+      set.add(10);
+      set.add(20);
+      set.add(30);
+      set.add(20);
+      // console.log(set);
+
+      const obj = {};
+      const info = { name: "info" };
+      set.add(obj);
+      set.add(info);
+      set.add(info);
+      // console.log(set);
+
+      // 3.应用场景：数组的去重
+      // const names = ["abc", "cba", "nba", "cba", "nba"];
+      // const uniqueNames = [];
+      // for (const item of names) {
+      //   if (!uniqueNames.includes(item)) {
+      //     uniqueNames.push(item);
+      //   }
+      // }
+      // console.log(uniqueNames);
+      // console.log(new Set(names));
+
+      // 4.Set 的其他属性和方法
+      // console.log(set.size);
+      set.delete(obj);
+      console.log(set);
+      console.log(set.has(info));
+
+      // Set 可以被 forEach 遍历
+      set.forEach((v) => {
+        console.log(v);
+      });
+
+      // Set 可以被 for...of 遍历
+      for (const item of set) {
+        console.log(item);
+      }
+    </script>
+  </body>
+</html>
